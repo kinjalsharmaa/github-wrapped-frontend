@@ -20,7 +20,7 @@ function App() {
     setSlideIndex(0);
 
     try {
-      const res = await fetch(`http://localhost:3001/api/github/${username}`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/github/${username}`);
       if (!res.ok) throw new Error('User not found');
       const json = await res.json();
       setData(json);
