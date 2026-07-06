@@ -1,16 +1,51 @@
-# React + Vite
+# GitHub Wrapped 🎉
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A "Spotify Wrapped"-style animated summary of any GitHub user's coding year — built as a full-stack project with a Node/Express backend and a React frontend.
 
-Currently, two official plugins are available:
+🔗 **Live demo:** [https://github-wrapped-frontend-gamma.vercel.app](https://github-wrapped-frontend-gamma.vercel.app)
+🔗 **Backend repo:** [https://github.com/kinjalsharmaa/github-wrapped-backend](https://github.com/kinjalsharmaa/github-wrapped-backend)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
+- Enter any public GitHub username and get an animated, story-style "wrapped" recap
+- Slide-by-slide reveal: repo count, top language, language breakdown chart, top starred repo
+- Color-themed slides with smooth Framer Motion animations
+- Downloadable summary card as a shareable PNG
+- Fully responsive, dark-themed UI
 
-## React Compiler
+## Tech Stack
+**Frontend:** React (Vite), Framer Motion, Recharts, html2canvas
+**Backend:** Node.js, Express
+**Data:** GitHub public REST API
+**Deployment:** Vercel (frontend), Render (backend)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## How it works
+1. User enters a GitHub username
+2. Frontend calls the backend, which fetches the user's profile and repo data from the GitHub API
+3. Backend aggregates language usage and top repo, and returns clean JSON
+4. Frontend renders it as an animated multi-slide experience
 
-## Expanding the Oxlint configuration
+## Running locally
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+**Backend:**
+```bash
+cd github-wrapped-backend
+npm install
+node index.js
+```
+
+**Frontend:**
+```bash
+cd github-wrapped-frontend
+npm install
+npm run dev
+```
+Create a `.env` file in the frontend root with:
+```
+VITE_API_URL=http://localhost:3001
+```
+
+## What I learned
+- Building and deploying a full-stack app (frontend + backend on separate hosts)
+- Working with third-party REST APIs and shaping raw data for a UI
+- Animation with Framer Motion (staggered reveals, page transitions)
+- Client-side image generation with html2canvas
